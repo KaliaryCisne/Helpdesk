@@ -1,0 +1,36 @@
+<div class="row mt-5">
+  <div class="col-md-12">
+    <div class="card card-body">
+        <div class="text-right mb-3">
+            <a href="/admin/departamentos/pdf" class="btn btn-outline-dark" target="_blank">
+                Gerar PDF!
+            </a>
+        </div>
+      <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+          <?php
+            foreach ($this->data['departments'] as $department) {
+                echo "
+                    <tr>
+                        <td>{$department->getName()}</td>
+                        <td>{$department->getDescription()}</td>
+                        <td>
+                          <a href='/admin/editar-departamento?id={$department->getId()}' class=\"btn btn-sm btn-warning\">Editar</a>
+                          <a href='/admin/excluir-departamento?id={$department->getId()}' class=\"btn btn-sm btn-danger\">Excluir</a>
+                        </td>
+                    </tr>
+                ";
+            }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

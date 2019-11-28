@@ -1,0 +1,42 @@
+<div class="row mt-5">
+  <div class="col-md-12">
+    <div class="card card-body">
+      <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Departamento</th>
+                <th>Tipo</th>
+                <th>Criado em</th>
+                <th>Atualizado em</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                if(isset($this->data['users'])) {
+                    foreach ($this->data['users'] as $user) {
+                        echo "
+                            <tr>
+                                <td>{$user->getName()}</td>
+                                <td>{$user->getEmail()}</td>
+                                <td>{$user->getDepartment()->getName()}</td>
+                                <td>{$user->getType()}</td>
+                                <td>{$user->getRegisteredAt()->format('Y-m-d')}</td>
+                                <td>{$user->getUpdatedAt()}</td>
+                                <td>
+                                    <a href='/admin/editar-usuario?id={$user->getId()}' class=\"btn btn-sm btn-warning\">Editar</a>
+                                    <a href='/admin/excluir-usuario?id={$user->getId()}' class=\"btn btn-sm btn-danger\">Excluir</a>
+                                </td>
+                            </tr>
+                        ";
+                    }
+                }
+            ?>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
