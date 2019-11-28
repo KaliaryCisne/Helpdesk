@@ -15,7 +15,7 @@ class Connection
     {
 
         $db = require('db.php');
-        $params = $db['local'];
+        $params = $db['develop'];
 
         $paths = [
             dirname(__DIR__).'/Entity',

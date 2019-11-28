@@ -32,5 +32,14 @@
         </tbody>
       </table>
     </div>
+      <?php
+      if (isset($this->data['error'])) {
+          echo "
+                <div class='alert alert-danger mt-3' role='alert'>
+                  {$this->data['error']}
+                </div>
+         ";
+      }
+      ?>
   </div>
 </div>

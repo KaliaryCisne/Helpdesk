@@ -3,14 +3,16 @@
 
 namespace Root\Adapter;
 
+
+
 $db = [
-    'local' => [
+    'develop' => [
         'driver' => 'pdo_mysql',
         'user' => 'kaliary',
         'password' => '12345678',
         'dbname' => 'helpdesk',
     ],
-    'curso' => [
+    'production' => [
         'driver' => 'pdo_mysql',
         'user' => 'root',
         'password' => '123456',
