@@ -50,9 +50,17 @@ final class DepartmentController extends AbstractController
         $id = $_GET['id'];
         $department = $this->departmentRepository->find($id);
 
-        $this->entityManager->remove($department);
-        $this->entityManager->flush();
+        try {
+            $this->entityManager->remove($department);
+            $this->entityManager->flush();
+        } catch (\Exception $e) {
+            $departments = $this->departmentRepository->findAll();
+            $this->render('Department/list', [
+                'error' => 'Não foi possível excluir esse registro, por gentileza consultar a TI!',
+                'departments' => $departments,
+           ]);
 
+        }
         header('location: /admin/departamentos');
     }
 
