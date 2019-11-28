@@ -1,0 +1,51 @@
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card card-body bg-dark text-white">
+            <h1>Cadastro de Usuário</h1>
+            <hr>
+            <p>Lorem Ipsum...</p>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="post">
+                    <label for="type">Tipo: </label>
+                    <select class="form-control" name="type" id="type">
+                        <option value="<?=$this->data['user']->getType();?>"> <?=$this->data['user']->getType();?></option>
+                        <option value="Suporte">Suporte</option>
+                        <option value="Cliente">Cliente</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
+                    <br>
+
+                    <label for="department">Setor/Departamento: </label>
+                    <select class="form-control" name="department" id="department">
+                        <option value="<?=$this->data['user']->getDepartment()->getId();?>"><?=$this->data['user']->getDepartment()->getName();?></option>
+                        <?php
+                        foreach ($this->data['department'] as $department) {
+                            echo "<option value=\"{$department->getId()}\">{$department->getName()}</option>";
+                        }
+                        ?>
+                    </select>
+                    <br>
+
+                    <label for="name">Nome: </label>
+                    <input
+                        type="text" value="<?=$this->data['user']->getName();?>" name="name" placeholder="Nome do Usuário"
+                        id="name" class="form-control" required>
+                    <br>
+
+                    <label for="email">Email: </label>
+                    <input
+                        type="text" value="<?=$this->data['user']->getEmail();?>" name="email" placeholder="Email do Usuário"
+                        id="email" class="form-control" required>
+                    <br>
+
+                    <button class="btn btn-primary btn-block">CONFIRMAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
