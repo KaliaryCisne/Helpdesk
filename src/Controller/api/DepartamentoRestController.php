@@ -54,7 +54,7 @@ final class DepartamentoRestController
         $this->entityManager->persist($department);
         $this->entityManager->flush();
 
-        echo json_encode($json);
+        echo json_encode($department->json());
 
     }
 
