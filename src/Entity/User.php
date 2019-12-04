@@ -178,4 +178,19 @@ class User
     {
         $this->updated_at = $updated_at;
     }
+
+    public function json() {
+      $objs = get_object_vars($this);
+      $response = [
+            'id' => $objs['id'],
+            'name' => $objs['name'],
+            'userType' => $objs['type'],
+            'department' => $this->getDepartment()->getName(),
+            'email' => $objs['email'],
+            'status' => $objs['isStatus'],
+            'lastLogin' => $this->getLastLogin(),
+            'registered_at' => $this->getRegisteredAt(),
+      ];
+      return $response;
+    }
 }
