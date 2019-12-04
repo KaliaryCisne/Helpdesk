@@ -59,10 +59,17 @@ final class UserController extends AbstractController
       $user->setDepartment($department);
       $user->setType($_POST['type']);
       $user->setPassword($password);
-      $this->entityManager->persist($user);
-      $this->entityManager->flush();
-      header('location: /admin/usuarios');
+      try {
+          $this->entityManager->persist($user);
+          $this->entityManager->flush();
+          header('location: /admin/usuarios');
+      } catch (\Exception $e) {
+          $user = $this->UserRepository->findAll();
+          $this->render('User/list', [
+              'error' => 'Erro ao adicionar esse usuário, por gentileza verificar todos os campos!'
+          ]);
 
+      }
     }
 
     public function removeAction(): void

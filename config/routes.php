@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Root\Controller\api\DepartamentoRestController;
+use Root\Controller\api\UserRestController;
 use Root\Controller\UserController;
 use Root\Controller\AdminController;
 use Root\Controller\IndexController;
@@ -38,5 +39,6 @@ return [
   '/suporte/chamados' => createRoute(TicketController::class, 'list'),
 
   '/api/departamento' =>createRoute(DepartamentoRestController::class, $_SERVER['REQUEST_METHOD']),
+  '/api/usuario' => createRoute(UserRestController::class, $_SERVER['REQUEST_METHOD']),
 
 ];
