@@ -187,7 +187,7 @@ class User
             'userType' => $objs['type'],
             'department' => $this->getDepartment()->getName(),
             'email' => $objs['email'],
-            'status' => $objs['isStatus'],
+            'status' => $this->isStatus(),
             'lastLogin' => $this->getLastLogin(),
             'registered_at' => $this->getRegisteredAt(),
       ];

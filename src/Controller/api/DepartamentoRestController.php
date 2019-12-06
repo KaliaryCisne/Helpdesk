@@ -66,6 +66,11 @@ final class DepartamentoRestController
 
         try {
             $department = $this->repository->find($id);
+
+            if(!$department) {
+                echo "Departamento não Econtrado!";
+                return;
+            }
             $department->setName($json->name ?? $department->getName());
             $department->setDescription($json->description ?? $department->getDescription());
 
@@ -87,7 +92,6 @@ final class DepartamentoRestController
             $this->entityManager->remove($department);
             $this->entityManager->flush();
 
-//            echo "Departamento deletado!";
             echo json_encode([
                 'success' => 'Departamento excluído',
             ]);
